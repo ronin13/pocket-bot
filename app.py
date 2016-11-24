@@ -4,16 +4,16 @@ from chalicelib import constants
 from chalicelib import fb
 from chalicelib import utils
 from chalicelib import auth
-import logging
 import requests
 import json
 import boto3
 import botocore
 import pprint
 
-app = Chalice(app_name='pocket-bot')
+app = Chalice(app_name='pocket_bot')
 app.debug = True
 
+# S3 buckets have server-side-encryption enabled.
 s3 = boto3.client('s3')
 config_data = {}
 config_data['user'] = {}
@@ -28,7 +28,6 @@ except KeyError:
 except botocore.exceptions.ClientError:
     pass
 
-logging.basicConfig(level=logging.INFO)
 
 # config_data['keys'] is 'bootstrapped' into the s3 bucket.
 config_data['keys'] = json.loads(s3.get_object(Bucket=constants.BUCKET, Key=constants.CONFIG_KEY)['Body'].read())['keys']
@@ -46,6 +45,7 @@ def hello_point(sender):
     return 'Hello, follow the bot'
 
 
+# A dummy to avoid 404 on favicon.ico
 @app.route('/favicon.ico', methods=['GET'])
 def favicon_request():
     return 'ABCD'
@@ -100,7 +100,7 @@ def bot_point():
                            (url, code) = auth.user_auth(sender, consumer_key, get_redirect_uri('/hello/'+str(sender)))
                            fb.fb_send(sender, "Click on this " + url + " for authorizing with Pocket", fb_token)
                            config_data['user'][sender] = {'code': code}
-                        else:
+                       elif message_text.startswith('http'):
 
                             pocket_token = config_data['user'][sender]['pocket_token']
 
@@ -114,7 +114,9 @@ def bot_point():
                                 return
 
 
-                            fb.fb_send(sender, message_text + " added successfully", fb_token)
+                            fb.fb_send(sender, "URL added successfully", fb_token)
+                        else:
+                            fb.fb_send(sender, "Unknown verb or url", fb_token)
 
 
     s3.put_object(Bucket=constants.BUCKET, Body=json.dumps(config_data), Key=constants.CONFIG_KEY)
