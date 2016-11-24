@@ -2,7 +2,7 @@ pocket_bot
 ===========
 
 ![Pocket Bot](https://www.dropbox.com/s/o3whct1ix973uyu/bot-icon3.png?dl=1)
-![getpocket logo](https://upload.wikimedia.org/wikipedia/commons/5/5b/Logo_Pocket.png)
+![getpocket logo](https://www.dropbox.com/s/cj4cdqv85ycn8rk/pocket-logo.png?dl=1)
 
 [Pocket](https://getpocket.com) facebook messenger bot built using [awslabs/chalice](https://github.com/awslabs/chalice), and runs on AWS Lambda and AWS API Gateway.
 [Getpocket API](https://getpocket.com/developer/) is used to add URLs.
