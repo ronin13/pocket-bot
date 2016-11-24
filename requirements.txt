@@ -1,0 +1,4 @@
+requests
+pyyaml
+boto3
+botocore

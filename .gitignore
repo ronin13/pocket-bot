@@ -1,0 +1,7 @@
+.chalice/deployments/
+.chalice/venv/
+*.pyc
+chalicelib/*.yml
+chalicelib/config.json
+venv
+.chalice/
