@@ -1,4 +1,4 @@
-pocket_bot
+Pocket Bot
 ===========
 
 ![Pocket Bot](https://www.dropbox.com/s/o3whct1ix973uyu/bot-icon3.png?dl=1)
