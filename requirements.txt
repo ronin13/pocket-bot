@@ -1,4 +1,4 @@
 requests==2.12.1
-pyyaml
+pyyaml==3.12
 boto3
 botocore
