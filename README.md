@@ -22,10 +22,6 @@ to services such as getpocket.com. Due to the nature of facebook api, facebook s
 However, one can still share link to a person or a bot in this case. 
 This bot authenticates the user if not authenticated already, and saves any URLs the user sends/shares to their pocket account.
 
-Features
---------
-
--   TODO
 
 Credits
 -------
