@@ -1,4 +1,4 @@
-requests
-pyyaml
-boto3
-botocore
+requests==2.12.1
+pyyaml==3.12
+boto3==1.4.1
+botocore==1.4.78
