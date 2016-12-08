@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 
 import json
 import pprint
+from urlparse import parse_qs
+from urlparse import urlsplit
 
 import requests
 from chalice import BadRequestError
@@ -109,10 +111,15 @@ def bot_point(**kwargs):
                             pocket_token = config_data[
                                 'user'][sender]['pocket_token']
 
+                            sane_url = parse_qs(
+                                urlsplit(message_text).query)['u']
+
+                            sane_url = ''.join(sane_url)
+
                             r = requests.post(constants.POCKET_ADD_URL, data=json.dumps({
                                 'consumer_key': consumer_key,
                                 'access_token': pocket_token,
-                                'url': message_text,
+                                'url': sane_url,
                             }), headers=utils.get_headers())
                             if r.status_code != 200:
                                 fb.fb_send(
