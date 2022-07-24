@@ -13,10 +13,6 @@ pocket_bot
         :target: https://pocket-bot.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://pyup.io/repos/github/ronin13/pocket_bot/shield.svg
-     :target: https://pyup.io/repos/github/ronin13/pocket_bot/
-     :alt: Updates
-
 
 Pocket messenger bot using awslabs/chalice
 
